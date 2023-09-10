@@ -9,10 +9,22 @@ import {
 } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+// import { saveBook, searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 
+//updated imports
+import { useMutation, useQuery } from '@apollo/client';
+import { searchGoogleBooks } from '../utils/searchBooks';
+import { SAVE_BOOK } from '../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
+
 const SearchBooks = () => {
+  //getting info about the logged in user
+  const { loading, data } = useQuery(QUERY_ME);
+  const me = data?.me || {};
+
+  const [saveBook, { error }] = useMutation(SAVE_BOOK);
+
   // create state for holding returned google api data
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data
@@ -64,26 +76,22 @@ const SearchBooks = () => {
     // find the book in `searchedBooks` state by the matching id
     const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
 
-    // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-    if (!token) {
-      return false;
-    }
-
     try {
-      const response = await saveBook(bookToSave, token);
-
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
+      const { data } = await saveBook({
+        variables: { id: me._id, bookToSave: bookToSave }
+      });
 
       // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
-      console.error(err);
+      console.error(JSON.parse(JSON.stringify(err)));
     }
   };
+
+  if (loading) {
+    return <h2>LOADING...</h2>;
+  }
+
 
   return (
     <>
@@ -119,10 +127,11 @@ const SearchBooks = () => {
             : 'Search for a book to begin'}
         </h2>
         <Row>
+
           {searchedBooks.map((book) => {
             return (
-              <Col md="4" key={book.bookId}>
-                <Card border='dark'>
+              <Col md="4" key={book.image}>
+                <Card key={book.bookId} border='dark'>
                   {book.image ? (
                     <Card.Img src={book.image} alt={`The cover for ${book.title}`} variant='top' />
                   ) : null}
@@ -145,6 +154,7 @@ const SearchBooks = () => {
               </Col>
             );
           })}
+
         </Row>
       </Container>
     </>
