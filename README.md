@@ -24,13 +24,13 @@
 
 - Install dependencies: npm install
 
-- Start the development server: npm run develop
+- In your CLI: npm run develop
 
 ## Demo
--DEMO GOES HERE
+https://github.com/deliaswe/BookSearch-engine/assets/113808453/2ed36209-d2a5-498c-8c9b-46e2674338c8
 
 ## Links
-- Heroku:
+[BookSearch engine](https://github.com/deliaswe/BookSearch-engine)
 
 ## Contributing
 [Delia Young GitHub](https://github.com/deliaswe)
