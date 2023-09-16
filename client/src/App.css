@@ -15,3 +15,99 @@ h6 {
   font-weight: 300;
   font-style: italic;
 }
+
+.navbar-brand {
+  font-size: 1.5rem; /* Brand text size */
+  font-weight: bold; /* Brand text weight */
+}
+
+.nav-link {
+  color: #DECBA4; /* Nav link text color */
+  font-weight: bold; /* Nav link text weight */
+  margin-right: 20px; /* Spacing between nav links */
+  transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.nav-link:hover {
+  color: #3E5151; /* Nav link text color on hover */
+}
+
+/* Tab Content */
+.tab-content {
+  padding: 20px;
+}
+
+/* Form Inputs */
+.form-control {
+  margin-bottom: 15px; /* Spacing between form inputs */
+}
+
+/* Buttons */
+.btn {
+  font-weight: bold; /* Button text weight */
+  transition: background-color 0.3s, color 0.3s; /* Smooth color transition on hover */
+}
+body {
+  background: #3E5151;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #DECBA4, #3E5151);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #DECBA4, #3E5151); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+/* Style the search form container */
+.text-light.bg-dark {
+  padding: 2rem 0;
+  text-align: center;
+}
+
+/* Style the search form */
+.form-control {
+  border-radius: 0;
+  font-size: 1.2rem;
+}
+
+/* Style the submit button */
+.btn-success {
+  border-radius: 10px;
+  font-size: 1.2rem;
+  background-color: #DECBA4;
+  border-color: #DECBA4;
+}
+
+/* Style the submit button hover */
+.btn-success:hover {
+  background-color: #3E5151;
+  border-color: #3E5151;
+}
+
+/* Style the results container */
+.pt-5 {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+/* Style the individual book cards */
+.card {
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.small {
+  font-size: 1rem;
+}
+
+.card-text {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+/* Style the save button */
+.btn-info {
+  border-radius: 0;
+  font-size: 1.2rem;
+}
+

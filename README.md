@@ -36,6 +36,7 @@
 [Delia Young GitHub](https://github.com/deliaswe)
 ## License
 ![GitHub all releases](https://img.shields.io/github/downloads/deliaswe/Professional-Readme-Generator/total?label=Delia%20young&logo=github&logoColor=%23ff69b4&style=for-the-badge)
+
 ![MIT License](https://img.shields.io/badge/license-MIT-pink)
 
 - This project is licensed under the MIT License. You can find the full license text in the LICENSE file.
