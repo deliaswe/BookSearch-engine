@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const resolvers = require('./resolvers.js');
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
@@ -12,10 +13,10 @@ Query: {
     me: async (_, args, context) => {
     if (context.user) {
         return User.findOne({ _id: context.user._id }).select("-__v -password");
-}
+    }
     throw AuthenticationError;
     },
-},
+    },
 Mutation: {
     // create a user, sign a token, and send it back (to client/src/components/SignUpForm.js)
     createUser: async (_, args) => {
@@ -31,7 +32,7 @@ Mutation: {
 
     if (!user) {
         throw AuthenticationError;
-    }
+}
 
     const correctPw = await user.isCorrectPassword(password);
 
@@ -39,9 +40,9 @@ Mutation: {
         throw AuthenticationError;
 }
 
-const token = signToken(user);
-return { token, user };
-},
+    const token = signToken(user);
+    return { token, user };
+    },
 
     // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
     // user comes from context
@@ -57,7 +58,7 @@ return { token, user };
 
     throw AuthenticationError;
 
-},
+    },
 
     // remove a book from `savedBooks`
     //user comes from context
@@ -67,7 +68,7 @@ return { token, user };
         { _id: context.user._id },
         { $pull: { savedBooks: { bookId: args.bookToDelete } } },
         { new: true }
-);
+        );
 
         return updatedUser;
 }

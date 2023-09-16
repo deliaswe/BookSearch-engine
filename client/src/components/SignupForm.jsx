@@ -14,7 +14,7 @@ const SignupForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
-  const [createUser, { error, data }] = useMutation(CREATE_USER);
+  const [createUser] = useMutation(CREATE_USER);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -53,8 +53,8 @@ const SignupForm = () => {
 
   return (
     <>
-      {/* This is needed for the validation functionality above */}
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+    {/* This is needed for the validation functionality above */}
+    <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* <Form onSubmit={handleFormSubmit}> */}
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
@@ -77,7 +77,7 @@ const SignupForm = () => {
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='email'>Email</Form.Label>
           <Form.Control
-            type='text' {/* Change 'email' to 'text' */}
+            type='email'
             placeholder='Your email address'
             name='email'
             onChange={handleInputChange}
